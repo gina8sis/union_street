@@ -48,21 +48,21 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       }
     })
 
-    .state('tab.friends', {
-      url: '/friends',
+    .state('tab.menu', {
+      url: '/menu',
       views: {
-        'tab-friends': {
-          templateUrl: 'templates/tab-friends.html',
-          controller: 'FriendsCtrl'
+        'tab-menu': {
+          templateUrl: 'templates/tab-menu.html',
+          controller: 'MenuCtrl'
         }
       }
     })
-    .state('tab.friend-detail', {
-      url: '/friend/:friendId',
+    .state('tab.menu-detail', {
+      url: '/menu/:menuId',
       views: {
-        'tab-friends': {
-          templateUrl: 'templates/friend-detail.html',
-          controller: 'FriendDetailCtrl'
+        'tab-menu': {
+          templateUrl: 'templates/menu-detail.html',
+          controller: 'MenuDetailCtrl'
         }
       }
     })
