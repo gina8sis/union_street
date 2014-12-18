@@ -1,8 +1,9 @@
 <ion-view title="Menu">
-  <ion-content>
+  <ion-content ng-controller="MenuCtrl">
     <ion-list>
-      <ion-item ng-repeat="menu in menus" type="item-text-wrap" href="#/tab/menu/{{menu.id}}">
-        {{menu.name}}</br>{{menu.description}}, ${{menu.price}}
+      <div class="item item-divider">Drinks</div>
+      <ion-item ng-repeat="menu in menus | orderBy:'menu.category'" type="item-text-wrap" href="#/tab/menu/{{menu.id}}">
+        {{menu.name}}</br>{{menu.description}}, {{menu.price | currency}}
       </ion-item>
     </ion-list>
   </ion-content>

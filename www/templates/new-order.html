@@ -1,0 +1,15 @@
+  <ion-view title="Confirm Order">
+    <ion-content padding="true" class="has-header" ng-controller="ConfirmCtrl">
+
+      <ion-list>
+        <ion-item ng-repeat="item in showItems">
+          <span>{{item.quantity}}</span> x {{item.name}}
+
+          {{item.price * item.quantity | currency}}
+        </ion-item>
+      </ion-list>
+
+      <a href="#/tab/confirmation" class="button button-dark button-block">Send Order</a>
+
+      </ion-content>
+  </ion-view>

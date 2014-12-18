@@ -21,7 +21,12 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   });
 })
 
-.config(function($stateProvider, $urlRouterProvider) {
+.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
+
+$httpProvider.defaults.useXDomain = true;
+delete $httpProvider.defaults.headers.common["X-Requested-With"];
+
+
 
   // Ionic uses AngularUI Router which uses the concept of states
   // Learn more here: https://github.com/angular-ui/ui-router
@@ -75,7 +80,28 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
           controller: 'AccountCtrl'
         }
       }
-    });
+    })
+
+  .state('tab.new-order', {
+      url: '/confirm_order',
+      views: {
+        'tab-menu': {
+          templateUrl: 'templates/new-order.html',
+          controller: 'ConfirmCtrl'
+        }
+      }
+    })
+
+  .state('tab.confirmation', {
+      url: '/confirmation',
+      views: {
+        'tab-menu': {
+          templateUrl: 'templates/confirmation.html',
+          controller: 'SendOrderCtrl'
+        }
+      }
+    })
+    ;
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/tab/dash');

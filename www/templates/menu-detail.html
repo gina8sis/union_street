@@ -1,14 +1,39 @@
 
 <ion-view title="Add to Order">
-    <ion-content padding="true" class="has-header">
-        <div class="list card">
-            <div class="item item-divider">{{menu.name}} <span>${{menu.price}}</span></div>
-            <div class="item item-body">{{menu.description}}</div>
-        </div>
-        <label class="item item-input">
-            <span class="input-label">Customize</span><textarea placeholder=""> </textarea>
-        </label>
-        <a href="#/neworder" class="button button-dark button-block">Add {{menu.name}} to Order</a>
-    </ion-content>
-    </ion-content>
+<ion-content padding="true" class="has-header" ng-controller="OrderCtrl">
+
+<form ng-submit="addItem(menu, data.quantity)">
+
+
+    <div class="item item-divider"><span>{{menu.name}}</span></div>
+    <div class="item item-body">{{menu.description}}</div>
+
+
+<div class="list">
+
+  <div class="item item-input item-select">
+    <div class="input-label">
+      {{menu.price * data.quantity | currency }}
+    </div>
+      <select ng-model="data.quantity" ng-init="data.quantity='1'">
+        <option selected>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+      </select>
+    </div>
+  </div>
+
+    <label class="item item-input item-stacked-label">
+      <span class="input-label">Optional Instructions</span>
+      <input ng-model="data.customize"  type="text" placeholder="ex:one sugar, or no tomato" />
+    </label>
+
+
+    <button ng-click="itemAdded = !itemAdded" ng-hide="itemAdded" class="button button-dark button-block">Add {{menu.name}} to Order</button>
+    <button ng-show="itemAdded" class="button button-dark button-block">{{menu.name}} added!</button>
+    <a href="#/tab/confirm_order" ng-show="itemAdded" class="button button-dark button-block">Confirm Order</a>
+  </form>
+</ion-content>
 </ion-view>

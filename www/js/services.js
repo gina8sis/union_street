@@ -33,7 +33,47 @@ angular.module('starter.services', [])
       return menu[menuId];
     }
   }
-});
+})
+
+  .service('CartService', function(){
+
+    var _self = this;
+
+    this.total = 0;
+
+    this.cartItems = []
+
+    this.addItem = function (item, quantity) {
+      var lineItem = JSON.parse( JSON.stringify( item ) );
+      lineItem.quantity = quantity;
+      console.log('line item ', lineItem);
+      console.log(quantity);
+      lineItem.menu_item_id = item.id;
+      _self.cartItems.push(lineItem);
+    };
+
+    this.addOne = function (item) {
+
+      //check if this item id is in the cart_items
+      // then adds one to the qty field
+    };
+
+
+    this.checkout = function() {
+
+    //send to rails
+    }
+
+    return this;
+  });
+
+
+
+
+
+
+
+
 
 // .factory('Menu', function($http, $scope) {
 //   // var menu = [];
