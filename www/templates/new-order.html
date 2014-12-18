@@ -3,9 +3,12 @@
 
       <ion-list>
         <ion-item ng-repeat="item in showItems">
-          <span>{{item.quantity}}</span> x {{item.name}}
+          <span>{{item.quantity}}</span> x {{item.name}}.............
 
           {{item.price * item.quantity | currency}}
+          </span><button ng-click="deleteItem($index)" class="button button-small button-dark" style="float: right;"></span>
+            Delete
+          </button>
         </ion-item>
       </ion-list>
 

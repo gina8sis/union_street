@@ -37,6 +37,8 @@ angular.module('starter.services', [])
 
   .service('CartService', function(){
 
+    // window.CartService = this;
+
     var _self = this;
 
     this.total = 0;
@@ -63,6 +65,10 @@ angular.module('starter.services', [])
 
     //send to rails
     }
+
+    this.deleteItem = function (index) {
+      _self.cartItems.splice(index,1)
+    };
 
     return this;
   });

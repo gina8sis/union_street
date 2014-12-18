@@ -96,8 +96,7 @@ delete $httpProvider.defaults.headers.common["X-Requested-With"];
       url: '/confirmation',
       views: {
         'tab-menu': {
-          templateUrl: 'templates/confirmation.html',
-          controller: 'SendOrderCtrl'
+          templateUrl: 'templates/confirmation.html'
         }
       }
     })

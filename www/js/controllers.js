@@ -31,6 +31,8 @@ angular.module('starter.controllers', [])
 
 .controller('OrderCtrl', function($scope, $http, $stateParams, CartService) {
 
+    window.CartService = CartService;
+
     $scope.addItem = function(item, quantity) {
 
       CartService.addItem(item, quantity)
@@ -46,14 +48,27 @@ angular.module('starter.controllers', [])
 
     $scope.newOrder = function(item){
       console.log($scope.data.optionalInstructions)
+    }
+  })
 
+.controller('ConfirmCtrl', function($scope, $http, $stateParams, CartService){
+  console.log(CartService.cartItems)
+
+   $scope.deleteItem = function(index) {
+
+      CartService.deleteItem(index)
+
+    }
+
+
+  $scope.showItems = CartService.cartItems
         var req = {
                  method: 'POST',
                  url: 'http://localhost:3000/api/v1/orders',
                  headers: {
                   'Content-Type': 'application/x-www-form-urlencoded'
                  },
-                 params: {item: item, optionalInstructions:$scope.data.optionalInstructions},
+                 params: {items: CartService.cartItems},
                 };
 
       $http(req).
@@ -65,18 +80,9 @@ angular.module('starter.controllers', [])
           // called asynchronously if an error occurs
           // or server returns response with an error status.
         });
-      }
-  })
-
-.controller('ConfirmCtrl', function($scope, CartService){
-  console.log(CartService.cartItems)
-  $scope.showItems = CartService.cartItems
-})
-
-
-.controller('SendOrderCtrl', function(){
 
 })
+
 
 
 .controller('AccountCtrl', function($scope) {
